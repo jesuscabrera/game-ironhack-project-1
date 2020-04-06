@@ -2,3 +2,10 @@ Conceptualize game
 
 Speak with a TA - Done 
 
+Set up the game - files, etc 
+
+Set up the files : constans.js | game.js | main.js | player.js | virus.js
+
+test that p5 is working 
+
+set up the game area - test that p5 is working and that the links between files are right. 

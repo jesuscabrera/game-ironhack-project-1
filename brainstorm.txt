@@ -1,0 +1,14 @@
+
+Virus distance - 
+
+When a representation of a virus is near other will be absorved - There will be a link and one of them will be bigger...
+
+1. player
+
+Doing a grid like a treasure game where the user can move? No I dont need a Grid 
+
+Do a grid and move the circle around - day 1 - Done a grid was not necesary....
+
+Set the boundaries - player should not move out of the canvas! 
+
+
