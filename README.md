@@ -1,2 +1,2 @@
 # game-ironhack-project-1
-repository for the first ironhack bootcamp project - create a game - 
+repository for the first project of the Ironhack webdevelopment bootcamp - create a game - 
