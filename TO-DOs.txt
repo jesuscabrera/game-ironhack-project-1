@@ -9,3 +9,16 @@ Set up the files : constans.js | game.js | main.js | player.js | virus.js
 test that p5 is working 
 
 set up the game area - test that p5 is working and that the links between files are right. 
+
+do the player and the movement: 
+
+do the particles/virus and its movement. 
+
+Set boundaries - edges 
+
+Set collision - player + virus 
+
+Set collision - exit 
+
+Do the particles - not one by one - as an array?
+
