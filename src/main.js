@@ -7,23 +7,22 @@ let game;
 
 let player;
 
-let virus1;
-let virus2;
-let virus3;
-let virus4;
-let virus5;
+let virus = [];
 
 function setup() {
   canvas = createCanvas(windowWidth - 100, windowHeight - 150);
   canvas.position(50, 100);
   game = new drawGame();
   player = new drawPlayer();
-  virus1 = new ParticleVirus();
-  virus2 = new ParticleVirus();
-  virus3 = new ParticleVirus();
-  virus4 = new ParticleVirus();
-  virus5 = new ParticleVirus();
+
+  for (var i = 0; i < 75; i++) {
+    virus.push(new ParticleVirus());
+  }
 }
+
+function randomParticles() {}
+
+console.log(virus);
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
@@ -50,18 +49,9 @@ function draw() {
 
   // virus - Particles
 
-  virus1.update();
-  virus1.display();
-
-  virus2.update();
-  virus2.display();
-
-  virus3.update();
-  virus3.display();
-
-  virus4.update();
-  virus4.display();
-
-  virus5.update();
-  virus5.display();
+  for (var i = 0; i < virus.length; i++) {
+    virus[i].update();
+    // virus[i].edges();
+    virus[i].display();
+  }
 }
