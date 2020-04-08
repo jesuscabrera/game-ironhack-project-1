@@ -1,16 +1,64 @@
-function ParticleVirus() {
-  // Start ParticleVirus in random place
-  this.pos = createVector(random(width), random(height));
+class ParticleVirus {
+  constructor() {
+    // Position
+    this.pos = createVector(random(width), random(height));
+    // Velocity
+    this.vel = createVector(random(-2, 2), random(-2, 2));
+    // Size
+    this.size = 30;
+    // Opacity
+    this.opacity = 70;
+  }
+  // update movement by adding velocity
+  update() {
+    this.pos.add(this.vel);
+    this.edges();
+  }
+  // draw single particle
+  draw() {
+    noStroke();
+    fill(255, 0, 0, this.opacity);
+    circle(this.pos.x, this.pos.y, this.size);
+  }
+  // Detect edges
 
-  this.update = function () {
-    // Move ParticleVirus randomly
-    var vel = createVector(random(-5, 5), random(-5, 5));
-    this.pos.add(vel);
-  };
+  edges() {
+    if (this.pos.x < 0 || this.pos.x > width) {
+      this.vel.x *= -1;
+    }
 
-  this.display = function () {
-    // Draw ParticleVirus as circle
-    fill(255, 0, 0);
-    ellipse(this.pos.x, this.pos.y, 48, 48);
-  };
+    if (this.pos.y < 0 || this.pos.y > height) {
+      this.vel.y *= -1;
+    }
+  }
+
+  // Connect particles
+  checkParticles(particles) {
+    particles.forEach((particle) => {
+      const d = dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+
+      if (d < 120) {
+        this.size += 0.05;
+        this.opacity += 0.01;
+        strokeWeight(2);
+        stroke(0, 0, 0, 10);
+
+        line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+      }
+    });
+  }
+  // Take life from player by contact
+
+  checkDamage(particles) {
+    particles.forEach((particle) => {
+      const damage = dist(this.pos.x, this.pos.y, player.pos.x, player.pos.y);
+
+      if (damage < player.size + 10) {
+        player.size -= 25;
+        strokeWeight(1);
+        stroke(255, 0, 0, 50);
+        line(this.pos.x, this.pos.y, player.pos.x, player.pos.y);
+      }
+    });
+  }
 }

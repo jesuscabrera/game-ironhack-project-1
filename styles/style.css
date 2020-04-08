@@ -16,4 +16,8 @@ body {
 
 h1 {
   text-align: center;
+  font-size: 30px;
+  font-weight: 300;
+  color: #d80f0f;
+  font-family: "Permanent Marker", cursive;
 }
