@@ -6,7 +6,10 @@ let player;
 
 let particles = [];
 
-let particlesLength;
+let partNumStart = 5;
+
+let velStart = 1;
+
 function createPart(partNum, vel) {
   for (let i = 0; i < partNum; i++) {
     particles.push(new ParticleVirus(vel));
@@ -16,7 +19,13 @@ function setup() {
   createCanvas(window.innerWidth - 100, window.innerHeight - 100);
   game = new drawGame();
   player = new drawPlayer();
-  createPart(30, 2);
+  createPart(partNumStart, velStart);
+
+  button = createButton("START GAME");
+  button.size(175, 50);
+  button.style("font-size:18; color:white; background-color: red");
+  button.position(window.innerWidth - 275, 25);
+  button.mousePressed(restartGame);
 }
 
 function draw() {
@@ -50,19 +59,41 @@ function draw() {
   game.gameOver();
   game.nextLevel();
 
-  console.log(game.passed);
+  // Pause the game - shows the Screen with level and restart the game
 
   if (game.passed === true) {
     noLoop();
     textFont("Permanent Marker");
-    textSize(50);
+    textSize(40);
     fill(216, 15, 15);
     textAlign(CENTER, CENTER);
-    text("YOU MAKE IT ! NEXT LEVEL ", WIDTH / 2, HEIGHT / 2);
+    text(
+      "YOU MAKE IT TO LEVEL " + game.level + " !",
+      WIDTH / 2 - 50,
+      HEIGHT / 2 - 50
+    );
     setTimeout(() => {
       game.passed = false;
       loop();
-      console.log("es falfalso", this.passed);
-    }, 2000);
+    }, 3000);
   }
+
+  // restart the game
+  if (game.endGame === true) {
+    noLoop();
+    console.log("game over");
+  }
+}
+
+function restartGame() {
+  console.log(game.endGame);
+
+  particles = [];
+  game.passed = false;
+  game.endGame = false;
+  game.level = 0;
+  player.size = 70;
+  player.pos = createVector(WIDTH, HEIGHT);
+  createPart(partNumStart, velStart);
+  loop();
 }

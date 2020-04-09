@@ -53,7 +53,10 @@ class ParticleVirus {
     particles.forEach((particle) => {
       const damage = dist(this.pos.x, this.pos.y, player.pos.x, player.pos.y);
 
-      if (damage < player.size + 10) {
+      if (damage < player.size / 2 + this.size / 2) {
+        // console.log("damage is " + damage);
+        // console.log("particle is " + this.size);
+        // console.log("player is " + player.size);
         player.size -= 25;
         strokeWeight(1);
         stroke(255, 0, 0, 50);
