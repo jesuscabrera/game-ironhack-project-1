@@ -30,7 +30,7 @@ function setup() {
   button = createButton("START GAME");
   button.size(175, 50);
   button.style("font-size:18; color:white; background-color: red");
-  button.position(window.innerWidth - 275, 15);
+  button.position(window.innerWidth - 275, 20);
   button.mousePressed(restartGame);
 }
 // Loop for the Game

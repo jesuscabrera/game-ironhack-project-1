@@ -26,7 +26,7 @@ class drawGame {
     if (player.size <= 10) {
       // console.log("GAME OVER");
       this.endGame = true;
-      console.log(this.endGame);
+      // console.log(this.endGame);
       textFont("Permanent Marker");
       textSize(60);
       fill(0, 0, 0);
