@@ -35,9 +35,9 @@ class drawGame {
       textAlign(CENTER, CENTER);
       text("GAME OVER", WIDTH / 2 - 50, HEIGHT / 2 - 50);
 
-      setTimeout(() => {
-        this.startGame = false;
-      }, 5000);
+      // setTimeout(() => {
+      //   this.startGame = false;
+      // }, 5000);
     }
   }
 
