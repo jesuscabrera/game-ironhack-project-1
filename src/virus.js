@@ -1,9 +1,9 @@
 class ParticleVirus {
-  constructor() {
+  constructor(vel) {
     // Position
     this.pos = createVector(random(width), random(height));
     // Velocity
-    this.vel = createVector(random(-2, 2), random(-2, 2));
+    this.vel = createVector(random(-vel, vel), random(-vel, vel));
     // Size
     this.size = 30;
     // Opacity

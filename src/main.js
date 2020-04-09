@@ -4,18 +4,19 @@ let game;
 
 let player;
 
-const particles = [];
+let particles = [];
 
 let particlesLength;
-
+function createPart(partNum, vel) {
+  for (let i = 0; i < partNum; i++) {
+    particles.push(new ParticleVirus(vel));
+  }
+}
 function setup() {
   createCanvas(window.innerWidth - 100, window.innerHeight - 100);
   game = new drawGame();
   player = new drawPlayer();
-  let particlesLength = 30;
-  for (let i = 0; i < particlesLength; i++) {
-    particles.push(new ParticleVirus());
-  }
+  createPart(30, 2);
 }
 
 function draw() {
@@ -47,5 +48,21 @@ function draw() {
 
   game.draw();
   game.gameOver();
-  game.nextCountry();
+  game.nextLevel();
+
+  console.log(game.passed);
+
+  if (game.passed === true) {
+    noLoop();
+    textFont("Permanent Marker");
+    textSize(50);
+    fill(216, 15, 15);
+    textAlign(CENTER, CENTER);
+    text("YOU MAKE IT ! NEXT LEVEL ", WIDTH / 2, HEIGHT / 2);
+    setTimeout(() => {
+      game.passed = false;
+      loop();
+      console.log("es falfalso", this.passed);
+    }, 2000);
+  }
 }
