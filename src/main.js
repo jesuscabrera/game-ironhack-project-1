@@ -33,6 +33,7 @@ function setup() {
   button.position(window.innerWidth - 275, 20);
   button.mousePressed(restartGame);
 }
+
 // Loop for the Game
 function draw() {
   clear();
@@ -65,6 +66,43 @@ function draw() {
   game.gameOver();
   game.nextLevel();
 
+  // Start the Game
+
+  if (game.startGame === false) {
+    noLoop();
+    fill(255, 175);
+    rect(0, 0, WIDTH, HEIGHT);
+    textFont("Permanent Marker");
+    textSize(16);
+    fill(216, 15, 15);
+    textAlign(CENTER, CENTER);
+    text(
+      `
+      Covid-19 - Ironhack Game
+      
+      The objetive of the Game is to arrive to the exit 
+      without been touched for the virus. 
+      
+      Every time a virus is touched some live (green circle around the player) 
+      is lost. When the all the life (green circle) ist lost, the game is over.
+
+      Every time the user arrives to the Exit, 
+      one level is increased and the speed and amount of virus is also increased.
+      
+      To control the game - use the arrow keys.
+      
+      Press the button to start / restart the game.
+
+      Good Luck! Have fun! Stay healthy! 
+
+      `,
+      WIDTH / 2 - 50,
+      HEIGHT / 2 - 50
+    );
+  } else if (game.startGame === true) {
+    loop();
+  }
+
   // Pause the game - Move on to the next Level Screen
 
   if (game.passed === true) {
@@ -87,7 +125,7 @@ function draw() {
   // restart the game
   if (game.endGame === true) {
     noLoop();
-    console.log("game over");
+    // console.log("game over");
   }
 }
 
@@ -96,6 +134,7 @@ function draw() {
 function restartGame() {
   particles = [];
   game.passed = false;
+  game.startGame = true;
   game.endGame = false;
   game.partNum = partNumStart;
   game.vel = velStart;

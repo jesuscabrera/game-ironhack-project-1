@@ -5,6 +5,7 @@ class drawGame {
     this.vel = 1;
     this.passed = false;
     this.level = 0;
+    this.startGame = false;
     this.endGame = false;
   }
 
@@ -26,13 +27,17 @@ class drawGame {
     if (player.size <= 10) {
       // console.log("GAME OVER");
       this.endGame = true;
+
       // console.log(this.endGame);
       textFont("Permanent Marker");
       textSize(60);
       fill(0, 0, 0);
       textAlign(CENTER, CENTER);
       text("GAME OVER", WIDTH / 2 - 50, HEIGHT / 2 - 50);
-      noLoop();
+
+      setTimeout(() => {
+        this.startGame = false;
+      }, 5000);
     }
   }
 
