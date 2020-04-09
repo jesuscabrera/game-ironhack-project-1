@@ -91,15 +91,10 @@ function draw() {
   }
 }
 
-// To Start the Game
+// To Start the Game - Reset values to start point
 
 function restartGame() {
-  console.log(game.endGame);
-
   particles = [];
-  console.log(particles);
-  console.log(partNumStart);
-  console.log(game.partNum);
   game.passed = false;
   game.endGame = false;
   game.partNum = partNumStart;
@@ -108,8 +103,5 @@ function restartGame() {
   player.size = 70;
   player.pos = createVector(WIDTH, HEIGHT);
   createPart(partNumStart, velStart);
-  console.log(particles);
-  console.log(partNumStart);
-  console.log(game.partNum);
   loop();
 }
