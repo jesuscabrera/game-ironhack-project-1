@@ -7,6 +7,7 @@ class drawGame {
     this.level = 0;
     this.startGame = false;
     this.endGame = false;
+    this.sound = false;
   }
 
   draw() {

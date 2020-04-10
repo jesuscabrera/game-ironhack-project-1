@@ -31,9 +31,12 @@ function setup() {
   game = new drawGame();
   player = new drawPlayer();
 
-  // load the sound
-
-  virusSound.loop();
+  //Create the Sound Button - To play / mute the Sound
+  button = createButton("SOUND ON/OFF");
+  button.size(175, 50);
+  button.style("font-size:18; color:white; background-color: black");
+  button.position(window.innerWidth - 475, 20);
+  button.mousePressed(playSound);
 
   // Create the Particles / Virus
   createPart(partNumStart, velStart);
@@ -158,4 +161,19 @@ function restartGame() {
   player.pos = createVector(WIDTH, HEIGHT);
   createPart(partNumStart, velStart);
   loop();
+}
+
+// To Play / Mute the Sound
+
+function playSound() {
+  if (game.sound === true) {
+    game.sound = false;
+    virusSound.stop();
+  } else if (game.sound === false) {
+    game.sound = true;
+
+    // load the sound
+
+    virusSound.loop();
+  }
 }
