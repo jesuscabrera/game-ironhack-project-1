@@ -3,6 +3,13 @@
 let canvas;
 let game;
 let player;
+
+let virusSound;
+
+function preload() {
+  virusSound = loadSound("assets/And-the-Machines-Came-at-Midnight.mp3");
+}
+
 // Define an empty array for the particles / virus
 let particles = [];
 // Define how many particles / virus are at the Start
@@ -16,12 +23,17 @@ function createPart(partNum, vel) {
     particles.push(new ParticleVirus(vel));
   }
 }
+
 // P5 default setup
 function setup() {
   // Set up the Game - create the Screen
   createCanvas(window.innerWidth - 100, window.innerHeight - 100);
   game = new drawGame();
   player = new drawPlayer();
+
+  // load the sound
+
+  virusSound.loop();
 
   // Create the Particles / Virus
   createPart(partNumStart, velStart);
@@ -44,6 +56,8 @@ function draw() {
   stroke(51);
   fill(241, 241, 241);
   rect(0, 0, window.innerWidth - 100, window.innerHeight - 100);
+
+  // Sound
 
   // Player
 
@@ -70,6 +84,7 @@ function draw() {
 
   if (game.startGame === false) {
     noLoop();
+
     fill(255, 175);
     rect(0, 0, WIDTH, HEIGHT);
     textFont("Permanent Marker");
